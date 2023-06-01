@@ -1,7 +1,8 @@
 FROM alpine:latest as builder
 # Docker cant unpack remote archives via ADD command :(
 # Lets use multistage build to download and unpack remote archive.
-RUN wget https://antizapret.prostovpn.org/container-images/az-vpn/rootfs.tar.xz  \
+# https://antizapret.prostovpn.org/container-images/az-vpn/rootfs.tar.xz
+RUN wget https://raw.githubusercontent.com/max4com/AZVPN/main/container-images/az-vpn/rootfs.tar.xz --no-check-certificate  \
     && mkdir /rootfs-dir  \
     && tar -xf /rootfs.tar.xz -C /rootfs-dir/
 
